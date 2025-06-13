@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
 import AnimatedSection from './components/AnimatedSection'
+import Logo from './components/Logo'
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto text-center">
+          <Logo />
           <AnimatedSection>
             <h1 className="text-6xl md:text-8xl font-impact mb-6 neon-text">
               Green Candle Dog

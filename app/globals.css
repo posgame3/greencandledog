@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background: linear-gradient(rgba(18,18,18,0.92), rgba(18,18,18,0.96)), url('/greencandledog.jpg') center/cover no-repeat fixed;
+}
+
 @layer base {
   body {
     @apply antialiased;
