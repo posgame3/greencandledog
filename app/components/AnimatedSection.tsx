@@ -7,14 +7,25 @@ interface AnimatedSectionProps {
   children: ReactNode
   delay?: number
   className?: string
+  direction?: 'up' | 'down' | 'left' | 'right' | 'fade'
 }
 
-export default function AnimatedSection({ children, delay = 0, className = '' }: AnimatedSectionProps) {
+const directionVariants = {
+  up: { initial: { opacity: 0, y: 40 }, animate: { opacity: 1, y: 0 } },
+  down: { initial: { opacity: 0, y: -40 }, animate: { opacity: 1, y: 0 } },
+  left: { initial: { opacity: 0, x: -40 }, animate: { opacity: 1, x: 0 } },
+  right: { initial: { opacity: 0, x: 40 }, animate: { opacity: 1, x: 0 } },
+  fade: { initial: { opacity: 0 }, animate: { opacity: 1 } },
+}
+
+export default function AnimatedSection({ children, delay = 0, className = '', direction = 'up' }: AnimatedSectionProps) {
+  const variants = directionVariants[direction] || directionVariants.up
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
+      initial={variants.initial}
+      whileInView={variants.animate}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ delay, duration: 0.7, ease: 'easeOut' }}
       className={className}
     >
       {children}
